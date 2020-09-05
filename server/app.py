@@ -1,6 +1,6 @@
 from flask import Flask
 
-from views.cameras import camera_api
+from server.views.cameras import camera_api
 
 app = Flask(__name__)
 app.register_blueprint(camera_api)
