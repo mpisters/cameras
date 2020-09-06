@@ -1,5 +1,6 @@
 import csv
 import os
+import re
 
 
 def parse_csv_cameras_to_json(path_to_csv):
@@ -10,9 +11,10 @@ def parse_csv_cameras_to_json(path_to_csv):
         line_count = 0
         for row in csv_reader:
             if line_count == 0:
-                print(f'Column names are {", ".join(row)}')
                 line_count += 1
-            row.update({'row_number': line_count})
+            match = re.match(r'^\w*-\w*-(\d*)-?', row['Camera'])
+            number = match.group(1) if match else None
+            row.update({'number': number})
             cameras.append(row)
             line_count += 1
     return cameras
