@@ -28,6 +28,8 @@ npm install
 npm run serve
 ```
 Server will be hosted on localhost:8080
+
+NOTE: Markers are not displayed because of a image issue
 ### To run the CLI
 * Go to the `server` folder inside the `cameras` folder
 * run the following command:
