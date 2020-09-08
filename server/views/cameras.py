@@ -11,3 +11,10 @@ camera_api = Blueprint('camera_api', __name__)
 def get_cameras():
     cameras = parse_csv_cameras_to_json('server/data/cameras-defb.csv')
     return json.dumps(cameras)
+
+
+@camera_api.route("/api/camera/<number>/")
+def get_cameras_by_number(number):
+    cameras = parse_csv_cameras_to_json('server/data/cameras-defb.csv')
+    cameras_filtered = [camera for camera in cameras if camera['number'] == number]
+    return json.dumps(cameras_filtered)
